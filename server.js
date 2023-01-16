@@ -1,12 +1,16 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
-
 const Document = require("./models/Document");
+
 dotenv.config();
 
 const app = express();
-mongoose.connect(process.env.MONGODB_URL);
+mongoose.connect(
+    `mongodb+srv://kumar:keymonache@wastebin.pnr7s1w.mongodb.net/?retryWrites=true&w=majority`
+);
+
+mongoose.set("strictQuery", false);
 
 //Using View engine
 app.set("view engine", "ejs");
@@ -63,4 +67,4 @@ app.get("/:id", async (req, res) => {
     }
 });
 
-app.listen(process.env.PORT || 3000);
+app.listen(5000);
